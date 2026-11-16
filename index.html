@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MaPoche · le carnet de ton argent</title>
+<meta name="description" content="MaPoche : note tes dépenses en FCFA à la voix ou au clavier, vois combien il te reste, suis qui te doit. Sans internet, sans compte.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Crect width='256' height='256' rx='56' fill='%230A0A0B'/%3E%3Cpath fill='%23D9C6A5' fill-rule='evenodd' d='M46 128A82 106 0 1 0 210 128A82 106 0 1 0 46 128ZM128 40Q172 128 128 216Q84 128 128 40Z'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&family=Playfair+Display:ital@1&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&family=Playfair+Display:ital@1&display=swap"></noscript>
+<style>
+  :root{--noir:#0A0A0B;--noir-2:#161618;--noir-3:#1E1E21;--trait:rgba(255,255,255,.08);--blanc:#fff;--gris:rgba(255,255,255,.66);
+    --gris-2:rgba(255,255,255,.42);--beige:#D9C6A5;--vert:#7BD99A;--corail:#FF7A62;--titre:'Poppins',system-ui,-apple-system,'Segoe UI',sans-serif;
+    --corps:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;--accent:'Playfair Display',Georgia,serif}
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--noir);color:var(--blanc);font-family:var(--corps);font-size:17px;line-height:1.6}
+  a{color:var(--beige)}
+  .page{max-width:960px;margin:0 auto;padding:28px 20px 72px}
+  header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:56px}
+  .marque{display:flex;align-items:center;gap:12px;color:var(--blanc);text-decoration:none}
+  .marque svg{width:34px;height:34px;color:var(--beige)}
+  .marque b{font-family:var(--titre);font-weight:600;font-size:20px}
+  nav a{color:var(--gris);text-decoration:none;font-size:15px;margin-left:18px}
+  .etiquette{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--beige);margin:0 0 12px}
+  h1{font-family:var(--titre);font-weight:700;font-size:clamp(42px,10vw,84px);line-height:1.02;margin:0 0 18px;letter-spacing:-.01em}
+  h1 em{font-family:var(--accent);font-weight:400;color:var(--beige)}
+  .chapeau{color:var(--gris);font-size:clamp(18px,3.4vw,21px);max-width:560px;margin:0 0 28px}
+  .bientot{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:12px;border:1px solid rgba(217,198,165,.3);color:var(--beige);font-weight:500}
+  .grille{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin:64px 0}
+  .carte{background:var(--noir-3);border:1px solid var(--trait);border-radius:20px;padding:22px}
+  .carte h3{font-family:var(--titre);font-weight:600;font-size:19px;margin:0 0 6px}
+  .carte p{color:var(--gris);margin:0;font-size:16px}
+  .phrase{font-family:var(--accent);font-style:italic;color:var(--blanc)}
+  .phrase i{font-style:normal;font-family:var(--titre);color:var(--corail);font-weight:600}
+  h2{font-family:var(--titre);font-weight:600;font-size:clamp(26px,5vw,36px);margin:0 0 18px}
+  details{border-bottom:1px solid var(--trait);padding:16px 0}
+  summary{cursor:pointer;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:16px}
+  summary::after{content:"+";color:var(--beige);font-size:22px;line-height:1}
+  details[open] summary::after{content:"–"}
+  details p{color:var(--gris);margin:10px 0 0}
+  .contact{margin-top:48px;padding:24px;border-radius:20px;background:linear-gradient(160deg,#2a251d,var(--noir-3) 60%);border:1px solid rgba(217,198,165,.22)}
+  .contact p{color:var(--gris);margin:4px 0 14px}
+  .bouton{display:inline-block;padding:13px 20px;border-radius:12px;background:var(--beige);color:#0E0E0E;font-weight:600;text-decoration:none}
+  footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--trait);color:var(--gris-2);font-size:14px;display:flex;flex-wrap:wrap;gap:8px 20px}
+  footer a{color:var(--gris)}
+  @media (max-width:520px){nav a{margin-left:12px}}
+</style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <a class="marque" href="index.html" aria-label="MaPoche">
+      <svg viewBox="0 0 256 256" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M46 128A82 106 0 1 0 210 128A82 106 0 1 0 46 128ZM128 40Q172 128 128 216Q84 128 128 40Z"/><path fill="currentColor" d="M142 89H168A7 7 0 0 1 168 103H142A7 7 0 0 1 142 89ZM88 89H114A7 7 0 0 1 114 103H88A7 7 0 0 1 88 89ZM142 121H168A7 7 0 0 1 168 135H142A7 7 0 0 1 142 121ZM88 121H114A7 7 0 0 1 114 135H88A7 7 0 0 1 88 121ZM142 153H168A7 7 0 0 1 168 167H142A7 7 0 0 1 142 153ZM88 153H114A7 7 0 0 1 114 167H88A7 7 0 0 1 88 153Z"/></svg>
+      <b>MaPoche</b>
+    </a>
+    <nav><a href="#aide">Aide</a><a href="confidentialite.html">Confidentialité</a></nav>
+  </header>
+
+  <main>
+    <p class="etiquette">Le carnet de ton argent</p>
+    <h1>Dis-le. <em>MaPoche</em> le range.</h1>
+    <p class="chapeau">Note tes dépenses en FCFA, à la voix ou au clavier, et sache à tout moment combien il te reste. Sans compte à
+      créer : tes notes restent sur ton téléphone.</p>
+    <span class="bientot">Bientôt sur Google Play et sur l'App Store</span>
+
+    <section class="grille" aria-label="Ce que fait MaPoche">
+      <div class="carte"><h3>Dis-le ou écris-le</h3><p class="phrase">« Ce matin moto-taxi <i>1 000</i>, marché <i>3 500</i> »</p>
+        <p>MaPoche comprend la phrase et range chaque dépense.</p></div>
+      <div class="carte"><h3>Poche par poche</h3><p>Espèces, mobile money, banque, tirelire : ton total d'un coup d'œil, et tes transferts.</p></div>
+      <div class="carte"><h3>Le bilan du mois</h3><p>Vois où part ton argent, et compare avec le mois d'avant.</p></div>
+      <div class="carte"><h3>Qui te doit</h3><p>Les prêts en famille et entre amis, les remboursements, et un rappel le jour prévu.</p></div>
+      <div class="carte"><h3>Les charges</h3><p>Loyer, électricité, internet : programmés une fois, rappelés le jour venu.</p></div>
+      <div class="carte"><h3>Tes chiffres restent à toi</h3><p>Pas de compte, pas de publicité, aucun serveur. Fonctionne sans internet.</p></div>
+    </section>
+
+    <section id="aide">
+      <p class="etiquette">Aide</p>
+      <h2>Les questions qu'on nous pose</h2>
+      <details><summary>Faut-il internet pour utiliser MaPoche ?</summary>
+        <p>Non. Tout fonctionne sans internet. Seule la voix peut en avoir besoin, selon ton téléphone : si le français n'est pas installé
+          pour la reconnaissance vocale sans connexion, le téléphone passe par internet. Sans réseau, note au clavier.</p></details>
+      <details><summary>Dans quels pays et quelles monnaies ?</summary>
+        <p>Mali, Sénégal, Côte d'Ivoire, Burkina Faso et Niger en FCFA, et Guinée en francs guinéens (GNF). Tu choisis ton pays au premier
+          lancement, et tu peux le changer dans les Réglages.</p></details>
+      <details><summary>MaPoche est-elle reliée à mon compte mobile money ou à ma banque ?</summary>
+        <p>Non. MaPoche est un carnet : c'est toi qui notes ce que tu dépenses et ce que tu reçois. Elle ne se connecte à aucun compte, ne
+          fait aucun paiement et ne déplace aucun argent réel.</p></details>
+      <details><summary>Je change de téléphone : comment garder mes notes ?</summary>
+        <p>Avant de changer, exporte tes notes en CSV depuis le Profil et garde le fichier. La sauvegarde en ligne n'existe pas encore :
+          tes notes ne quittent jamais ton téléphone sans toi.</p></details>
+      <details><summary>J'ai oublié mon code à 4 chiffres.</summary>
+        <p>Touche « Code oublié ? » sur l'écran du code. Si l'empreinte est activée, elle te permet de choisir un nouveau code. Sinon, il
+          faut tout effacer et recommencer : pour ta sécurité, personne ne peut retrouver ton code, même nous.</p></details>
+      <details><summary>Comment tout effacer ?</summary>
+        <p>Profil, puis « Tout effacer ». Supprimer l'app efface aussi toutes ses données du téléphone.</p></details>
+    </section>
+
+    <section class="contact" id="contact">
+      <h2 style="margin:0 0 4px">Une question, une idée, un souci ?</h2>
+      <p>Écris-nous sur WhatsApp : <strong style="color:#fff">+223 76 49 95 06</strong></p>
+      <a class="bouton" href="https://wa.me/22376499506" rel="noopener">Ouvrir WhatsApp</a>
+    </section>
+  </main>
+
+  <footer>
+    <span>© 2026 KONATE TECHNOLOGIE SARL, Bamako</span>
+    <a href="confidentialite.html">Politique de confidentialité</a>
+  </footer>
+</div>
+</body>
+</html>
