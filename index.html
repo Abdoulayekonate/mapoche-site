@@ -2,113 +2,355 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>MaPoche · le carnet de ton argent</title>
-<meta name="description" content="MaPoche : note tes dépenses en FCFA à la voix ou au clavier, vois combien il te reste, suis qui te doit. Sans internet, sans compte.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MaPoche : gère ton argent de poche</title>
+<meta name="description" content="À la fin du mois, tu ne sais pas où part ton argent ? MaPoche note tes dépenses quand tu les dis et te montre ce qu'il te reste. Gratuite, sans compte.">
+<link rel="canonical" href="https://abdoulayekonate.github.io/mapoche-site/">
+<meta name="theme-color" content="#0A0A0B">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="MaPoche">
+<meta property="og:title" content="MaPoche : gère ton argent de poche">
+<meta property="og:description" content="À la fin du mois, tu ne sais pas où part ton argent ? Voici la solution : dis tes dépenses, MaPoche les range et te montre ce qu'il te reste.">
+<meta property="og:url" content="https://abdoulayekonate.github.io/mapoche-site/">
+<meta property="og:image" content="https://abdoulayekonate.github.io/mapoche-site/img/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MaPoche : Gère ton argent de poche.">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Crect width='256' height='256' rx='56' fill='%230A0A0B'/%3E%3Cpath fill='%23D9C6A5' fill-rule='evenodd' d='M46 128A82 106 0 1 0 210 128A82 106 0 1 0 46 128ZM128 40Q172 128 128 216Q84 128 128 40Z'/%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&family=Playfair+Display:ital@1&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&family=Playfair+Display:ital@1&display=swap"></noscript>
+<link rel="apple-touch-icon" href="img/icone-512.png">
+<!-- Les polices de l'app, servies par le site (pas de Google Fonts : une connexion de moins sur un réseau lent). 52 Ko en tout. -->
+<link rel="preload" href="polices/poppins-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="polices/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<!-- Avant le premier affichage : les blocs qui apparaissent au défilement ne se cachent que si le téléphone sait les révéler -->
+<script>if('IntersectionObserver' in window&&!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches))document.documentElement.className+=' js';</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://abdoulayekonate.github.io/mapoche-site/#app",
+      "name": "MaPoche : gérer mon argent",
+      "alternateName": "MaPoche",
+      "description": "Le carnet de ton argent de tous les jours. Tu dis ou tu écris ce que tu as dépensé, MaPoche le range, et tu sais à tout moment combien il te reste. En FCFA, sans compte à créer, et tout reste sur ton téléphone.",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Android 7.0 ou plus récent",
+      "inLanguage": "fr",
+      "url": "https://abdoulayekonate.github.io/mapoche-site/",
+      "downloadUrl": "https://play.google.com/store/apps/details?id=app.mapoche",
+      "installUrl": "https://play.google.com/store/apps/details?id=app.mapoche",
+      "image": "https://abdoulayekonate.github.io/mapoche-site/img/icone-512.png",
+      "screenshot": [
+        "https://abdoulayekonate.github.io/mapoche-site/img/ecran-phrase.jpg",
+        "https://abdoulayekonate.github.io/mapoche-site/img/ecran-accueil.jpg",
+        "https://abdoulayekonate.github.io/mapoche-site/img/ecran-bilan.jpg"
+      ],
+      "countriesSupported": "ML, SN, CI, BF, NE, GN",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "XOF" },
+      "publisher": { "@id": "https://abdoulayekonate.github.io/mapoche-site/#editeur" }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://abdoulayekonate.github.io/mapoche-site/#editeur",
+      "name": "KONATE TECHNOLOGIE SARL"
+    }
+  ]
+}
+</script>
 <style>
-  :root{--noir:#0A0A0B;--noir-2:#161618;--noir-3:#1E1E21;--trait:rgba(255,255,255,.08);--blanc:#fff;--gris:rgba(255,255,255,.66);
-    --gris-2:rgba(255,255,255,.42);--beige:#D9C6A5;--vert:#7BD99A;--corail:#FF7A62;--titre:'Poppins',system-ui,-apple-system,'Segoe UI',sans-serif;
-    --corps:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;--accent:'Playfair Display',Georgia,serif}
-  *{box-sizing:border-box}
-  html{-webkit-text-size-adjust:100%}
-  body{margin:0;background:var(--noir);color:var(--blanc);font-family:var(--corps);font-size:17px;line-height:1.6}
-  a{color:var(--beige)}
-  .page{max-width:960px;margin:0 auto;padding:28px 20px 72px}
-  header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:56px}
-  .marque{display:flex;align-items:center;gap:12px;color:var(--blanc);text-decoration:none}
-  .marque svg{width:34px;height:34px;color:var(--beige)}
-  .marque b{font-family:var(--titre);font-weight:600;font-size:20px}
-  nav a{color:var(--gris);text-decoration:none;font-size:15px;margin-left:18px}
-  .etiquette{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--beige);margin:0 0 12px}
-  h1{font-family:var(--titre);font-weight:700;font-size:clamp(42px,10vw,84px);line-height:1.02;margin:0 0 18px;letter-spacing:-.01em}
-  h1 em{font-family:var(--accent);font-weight:400;color:var(--beige)}
-  .chapeau{color:var(--gris);font-size:clamp(18px,3.4vw,21px);max-width:560px;margin:0 0 28px}
-  .bientot{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:12px;border:1px solid rgba(217,198,165,.3);color:var(--beige);font-weight:500}
-  .grille{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin:64px 0}
-  .carte{background:var(--noir-3);border:1px solid var(--trait);border-radius:20px;padding:22px}
-  .carte h3{font-family:var(--titre);font-weight:600;font-size:19px;margin:0 0 6px}
-  .carte p{color:var(--gris);margin:0;font-size:16px}
-  .phrase{font-family:var(--accent);font-style:italic;color:var(--blanc)}
-  .phrase i{font-style:normal;font-family:var(--titre);color:var(--corail);font-weight:600}
-  h2{font-family:var(--titre);font-weight:600;font-size:clamp(26px,5vw,36px);margin:0 0 18px}
-  details{border-bottom:1px solid var(--trait);padding:16px 0}
-  summary{cursor:pointer;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:16px}
-  summary::after{content:"+";color:var(--beige);font-size:22px;line-height:1}
-  details[open] summary::after{content:"–"}
-  details p{color:var(--gris);margin:10px 0 0}
-  .contact{margin-top:48px;padding:24px;border-radius:20px;background:linear-gradient(160deg,#2a251d,var(--noir-3) 60%);border:1px solid rgba(217,198,165,.22)}
-  .contact p{color:var(--gris);margin:4px 0 14px}
-  .bouton{display:inline-block;padding:13px 20px;border-radius:12px;background:var(--beige);color:#0E0E0E;font-weight:600;text-decoration:none}
-  footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--trait);color:var(--gris-2);font-size:14px;display:flex;flex-wrap:wrap;gap:8px 20px}
-  footer a{color:var(--gris)}
-  @media (max-width:520px){nav a{margin-left:12px}}
+/* =========================================================================================================================
+   MaPoche · la landing page. Variante B « L'écran » de la version épurée (premium et minimaliste), avec le défilement des écrans
+   de la variante C : choix de Mr.Konaté du 17/11/2026, aperçu preview-landing-v2.html. Retouches du 17/11 au soir : police d'accent
+   remplacée (l'italique doré « fait IA », aperçu preview-police-accent.html), 3 histoires retirées, pas de numéro de téléphone ni de
+   ville sur la page, bouton App Store affiché (sans lien tant qu'Apple n'a pas publié l'app).
+   Règles : un seul accent (le nacre), de grands titres, beaucoup d'espace, des traits fins, un seul bouton principal, aucun objet
+   posé à part (ils sont dans les captures). Images et polices : `python3 stores/outils/fabriquer-site.py`.
+   À garder : l'ancre #aide (URL d'assistance de l'App Store) et le lien confidentialite.html (déclaré aux deux stores).
+   ========================================================================================================================= */
+
+/* 1. Polices et jetons (la page est toujours sombre, comme l'app) */
+@font-face{font-family:'Poppins';font-weight:600;font-style:normal;font-display:swap;src:url(polices/poppins-latin-600-normal.woff2) format('woff2')}
+@font-face{font-family:'Inter';font-weight:400;font-style:normal;font-display:swap;src:url(polices/inter-latin-400-normal.woff2) format('woff2')}
+:root{
+  --noir:#0A0A0B; --trait:rgba(255,255,255,.09); --trait-2:rgba(255,255,255,.16);
+  --blanc:#FFFFFF; --gris:rgba(255,255,255,.62); --gris-2:rgba(255,255,255,.42);
+  --creme:#F2EADC;
+  --nacre:radial-gradient(circle at 34% 28%,#FFFFFF 0%,#F7F1E6 46%,#D9C8A8 100%);
+  --f-titre:'Poppins',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --f-corps:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --accent:rgba(242,234,220,.48);
+  --e-doux:cubic-bezier(.22,1,.36,1);
+  color-scheme:dark;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--noir:#0A0A0B;--blanc:#FFFFFF;color-scheme:dark}}
+:root[data-theme="dark"]{--noir:#0A0A0B;--blanc:#FFFFFF;color-scheme:dark}
+
+/* 2. Base */
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;background:var(--noir)}
+body{margin:0;background:var(--noir);color:var(--blanc);font:400 16.5px/1.65 var(--f-corps);-webkit-font-smoothing:antialiased;font-variant-numeric:lining-nums}
+.page{overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+h1,h2,h3{margin:0;font-family:var(--f-titre);font-weight:600;letter-spacing:-.03em}
+/* L'accent : la même police, en gris nacre (option 1 « ton sur ton » de preview-police-accent.html) */
+h1 em,h2 em,blockquote span{font-style:normal;color:var(--accent)}
+b,strong{font-family:var(--f-titre);font-weight:600}
+p{margin:0}
+:focus-visible{outline:1.5px solid var(--creme);outline-offset:4px;border-radius:6px}
+.enveloppe{width:100%;max-width:1080px;margin:0 auto;padding-left:20px;padding-right:20px}
+.etiq{font:400 11px/1.3 var(--f-corps);letter-spacing:.24em;text-transform:uppercase;color:var(--gris-2);margin:0 0 16px}
+.sous{color:var(--gris);font-size:17px;line-height:1.6;max-width:30em}
+.bloc{padding-top:104px;padding-bottom:104px}
+h2{font-size:clamp(32px,8.6vw,64px);line-height:1.03;letter-spacing:-.04em}
+@media (min-width:860px){.bloc{padding-top:150px;padding-bottom:150px}}
+
+/* 3. En-tête : le cauri, l'aide, un petit « Télécharger » */
+.tete{display:flex;align-items:center;justify-content:space-between;gap:12px;height:72px}
+.marque{display:flex;align-items:center;gap:10px;text-decoration:none;font:600 18px/1 var(--f-titre);letter-spacing:-.01em}
+.marque svg{width:26px;height:26px;color:var(--creme);flex:none}
+.tete nav{display:flex;align-items:center;gap:20px}
+.tete nav a{color:var(--gris);text-decoration:none;font-size:14px;transition:color .2s}
+.tete nav a:hover{color:var(--blanc)}
+.tete nav .mini{color:var(--blanc);border:1px solid var(--trait-2);border-radius:999px;padding:8px 14px;font-size:13.5px}
+
+/* 4. Les badges officiels des deux stores (fichiers d'origine de Google et d'Apple, non modifiés, en anglais : le badge français
+   d'Apple ne se télécharge que depuis tools.applemarketingtools.com). Le PNG de Google contient sa marge de sécurité (24 % de la
+   hauteur visible de chaque côté) : il est affiché plus grand et reprend cette marge en négatif, pour que les deux badges aient
+   la même hauteur visible (--h). Le badge App Store n'a pas de lien tant qu'Apple n'a pas publié l'app (demande du 17/11). */
+.badges{--h:50px;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:14px;scroll-margin-top:24px}
+.badge{display:block;line-height:0;transition:transform .25s var(--e-doux)}
+a.badge:active{transform:scale(.97)}
+.badge img{height:var(--h);width:auto;max-width:none}
+.badge.google img{height:calc(var(--h) / .675);margin:calc(var(--h) * -.24)}
+@media (min-width:860px){.badges{--h:56px}}
+/* les petits téléphones (320 px) : les badges et l'en-tête restent dans les marges */
+@media (max-width:359px){.badges{--h:42px;gap:10px}.tete nav{gap:14px}.tete nav .mini{padding:7px 11px;font-size:13px}}
+.ios{display:flex;align-items:center;justify-content:center;gap:9px;margin-top:18px;color:var(--gris-2);font-size:13.5px}
+.ios::before{content:"";width:6px;height:6px;border-radius:50%;border:1px solid var(--gris-2)}
+
+/* 5. Le téléphone : fin, sans décor, sur une lueur nacre */
+.tel{position:relative;padding:5px;border-radius:46px;background:#18181a;box-shadow:0 0 0 1px rgba(255,255,255,.1),0 50px 90px rgba(0,0,0,.65)}
+.tel img{width:100%;aspect-ratio:420/909;object-fit:cover;border-radius:41px;background:var(--noir)}
+.halo::before{content:"";position:absolute;left:-30%;right:-30%;top:12%;height:76%;background:radial-gradient(closest-side,rgba(242,234,220,.13),transparent 75%);pointer-events:none}
+
+/* 6. Le haut de page : la promesse, le bouton, le grand téléphone qui sort du noir */
+.haut{text-align:center;padding-top:56px}
+h1{font-size:clamp(34px,10.6vw,108px);line-height:.98;letter-spacing:-.05em;margin:0 0 22px}
+.haut .sous{margin:0 auto 34px}
+/* la question du haut : une bulle de conversation, comme une phrase qu'on se dit (le problème), avant la réponse (le titre) */
+.question{display:inline-block;max-width:22em;margin:0 0 26px;padding:11px 18px;border-radius:20px 20px 20px 6px;background:rgba(255,255,255,.05);
+  border:1px solid var(--trait);color:var(--gris);font-size:15.5px;line-height:1.45;text-wrap:balance}
+.scene{position:relative;width:min(80vw,340px);margin:72px auto 0;height:min(118vw,500px);overflow:hidden}
+.scene .halo{position:absolute;inset:0}
+.scene .tel{position:absolute;left:0;right:0;top:0}
+.scene::after{content:"";position:absolute;left:0;right:0;bottom:0;height:45%;background:linear-gradient(rgba(10,10,11,0),var(--noir) 85%);z-index:2}
+
+
+/* 7. Écran par écran : le défilement des six écrans (repris de la variante C) */
+.ecrans{text-align:center;padding-top:40px;padding-bottom:104px}
+.rail{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -20px;padding:48px 20px 8px;text-align:left;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.rail::-webkit-scrollbar{display:none}
+.rail figure{flex:0 0 46%;margin:0;scroll-snap-align:start}
+.rail .tel{border-radius:34px;padding:4px}
+.rail .tel img{border-radius:30px}
+.rail figcaption{margin-top:14px;font:400 14px/1.4 var(--f-corps);color:var(--gris)}
+.rail figcaption b{font:400 11px/1 var(--f-corps);letter-spacing:.18em;color:var(--gris-2);margin-right:6px;font-style:normal}
+.glisse{margin-top:18px;color:var(--gris-2);font-size:13px}
+@media (min-width:860px){.ecrans{padding-bottom:150px}.rail{overflow:visible;margin:0;padding:64px 0 0;gap:24px}.rail figure{flex:1 1 0}.glisse{display:none}}
+
+/* 9. Confidentialité et pays */
+.serment{text-align:center}
+.serment blockquote{margin:0 auto 34px;max-width:14em;font:600 clamp(30px,8.2vw,60px)/1.08 var(--f-titre);color:var(--creme);letter-spacing:-.04em}
+.faits,.pays p{font:400 11.5px/2 var(--f-corps);letter-spacing:.22em;text-transform:uppercase;color:var(--gris)}
+.faits span,.pays p span{color:var(--gris-2);margin:0 .2em}
+.serment a{display:inline-block;margin-top:26px;color:var(--creme);font-size:15px;text-underline-offset:4px;text-decoration-color:rgba(242,234,220,.35)}
+.pays{text-align:center;padding-bottom:40px}
+.pays small{display:block;margin-top:10px;color:var(--gris-2);font-size:14px}
+
+/* 10. Aide (l'ancre #aide est l'URL d'assistance de l'App Store) */
+.aide h2{font-size:clamp(30px,8vw,52px);line-height:1.05;margin-bottom:40px}
+.faq{max-width:760px;border-bottom:1px solid var(--trait)}
+.faq details{border-top:1px solid var(--trait)}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:22px 0;
+  font:600 16.5px/1.45 var(--f-titre);letter-spacing:-.01em}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";flex:none;width:12px;height:12px;opacity:.6;transition:transform .35s var(--e-doux);
+  background:linear-gradient(var(--blanc),var(--blanc)) center/12px 1.3px no-repeat,linear-gradient(var(--blanc),var(--blanc)) center/1.3px 12px no-repeat}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{color:var(--gris);padding:0 0 24px;max-width:40em}
+
+/* 11. Contact et pied de page */
+.contact{padding-bottom:30px}
+.contact h2{font-size:clamp(30px,8vw,52px);line-height:1.05;margin-bottom:34px}
+.ligne-wa{display:flex;align-items:center;gap:16px;padding:22px 0;border-top:1px solid var(--trait);border-bottom:1px solid var(--trait);text-decoration:none;transition:padding .35s var(--e-doux)}
+.ligne-wa:hover{padding-left:6px}
+.ligne-wa small{display:block;font:400 11px/1.3 var(--f-corps);letter-spacing:.24em;text-transform:uppercase;color:var(--gris-2);margin-bottom:6px}
+.ligne-wa strong{font-size:clamp(20px,5.6vw,30px);letter-spacing:-.01em;white-space:nowrap}
+.ligne-wa i{margin-left:auto;flex:none;width:46px;height:46px;border-radius:50%;background:var(--nacre);color:#0E0E0E;display:grid;place-items:center}
+.ligne-wa i svg{width:18px;height:18px}
+.pied{padding:40px 0 calc(120px + env(safe-area-inset-bottom));color:var(--gris-2);font-size:13.5px}
+.pied .enveloppe{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center}
+.pied a{text-decoration:none;color:var(--gris)}
+.pied a:hover{color:var(--blanc)}
+.pied .marque{font-size:15px;margin-right:auto;color:var(--blanc)}
+.pied .marque svg{width:20px;height:20px}
+@media (min-width:860px){.pied{padding-bottom:48px}}
+
+/* 12. La pastille collante du bas, sur téléphone : après le bouton du haut, jamais sur le pied de page */
+.flottant{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom));z-index:60;transform:translate(-50%,160%);transition:transform .55s var(--e-doux)}
+.flottant.montre{transform:translate(-50%,0)}
+.flottant{--h:40px;display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:18px;white-space:nowrap;background:rgba(20,20,22,.88);
+  -webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);box-shadow:0 18px 40px rgba(0,0,0,.65),0 0 0 1px var(--trait) inset}
+@media (max-width:359px){.flottant{--h:36px;gap:8px;padding:8px 10px}}
+@media (min-width:860px){.flottant{display:none}}
+
+/* 13. Apparition douce (seulement si le téléphone sait la faire : sinon tout est affiché d'emblée) */
+.js .monte{opacity:0;transform:translateY(16px);transition:opacity 1s var(--e-doux),transform 1s var(--e-doux)}
+.js .monte.visible{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .js .monte{opacity:1;transform:none}
+}
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="cauri" viewBox="0 0 256 256"><path fill="currentColor" fill-rule="evenodd" d="M46 128A82 106 0 1 0 210 128A82 106 0 1 0 46 128ZM128 40Q172 128 128 216Q84 128 128 40Z"/><path fill="currentColor" d="M142 89H168A7 7 0 0 1 168 103H142A7 7 0 0 1 142 89ZM88 89H114A7 7 0 0 1 114 103H88A7 7 0 0 1 88 89ZM142 121H168A7 7 0 0 1 168 135H142A7 7 0 0 1 142 121ZM88 121H114A7 7 0 0 1 114 135H88A7 7 0 0 1 88 121ZM142 153H168A7 7 0 0 1 168 167H142A7 7 0 0 1 142 153ZM88 153H114A7 7 0 0 1 114 167H88A7 7 0 0 1 88 153Z"/></symbol>
+    <symbol id="fleche" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  </defs>
+</svg>
+
 <div class="page">
-  <header>
-    <a class="marque" href="index.html" aria-label="MaPoche">
-      <svg viewBox="0 0 256 256" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M46 128A82 106 0 1 0 210 128A82 106 0 1 0 46 128ZM128 40Q172 128 128 216Q84 128 128 40Z"/><path fill="currentColor" d="M142 89H168A7 7 0 0 1 168 103H142A7 7 0 0 1 142 89ZM88 89H114A7 7 0 0 1 114 103H88A7 7 0 0 1 88 89ZM142 121H168A7 7 0 0 1 168 135H142A7 7 0 0 1 142 121ZM88 121H114A7 7 0 0 1 114 135H88A7 7 0 0 1 88 121ZM142 153H168A7 7 0 0 1 168 167H142A7 7 0 0 1 142 153ZM88 153H114A7 7 0 0 1 114 167H88A7 7 0 0 1 88 153Z"/></svg>
-      <b>MaPoche</b>
-    </a>
-    <nav><a href="#aide">Aide</a><a href="confidentialite.html">Confidentialité</a></nav>
+  <header class="enveloppe tete">
+    <a class="marque" href="./" aria-label="MaPoche, accueil"><svg aria-hidden="true"><use href="#cauri"/></svg>mapoche</a>
+    <nav aria-label="Liens utiles"><a href="#aide">Aide</a><a class="mini" href="#telecharger">Télécharger</a></nav>
   </header>
 
   <main>
-    <p class="etiquette">Le carnet de ton argent</p>
-    <h1>Dis-le. <em>MaPoche</em> le range.</h1>
-    <p class="chapeau">Note tes dépenses en FCFA, à la voix ou au clavier, et sache à tout moment combien il te reste. Sans compte à
-      créer : tes notes restent sur ton téléphone.</p>
-    <span class="bientot">Bientôt sur Google Play et sur l'App Store</span>
-
-    <section class="grille" aria-label="Ce que fait MaPoche">
-      <div class="carte"><h3>Dis-le ou écris-le</h3><p class="phrase">« Ce matin moto-taxi <i>1 000</i>, marché <i>3 500</i> »</p>
-        <p>MaPoche comprend la phrase et range chaque dépense.</p></div>
-      <div class="carte"><h3>Poche par poche</h3><p>Espèces, mobile money, banque, tirelire : ton total d'un coup d'œil, et tes transferts.</p></div>
-      <div class="carte"><h3>Le bilan du mois</h3><p>Vois où part ton argent, et compare avec le mois d'avant.</p></div>
-      <div class="carte"><h3>Qui te doit</h3><p>Les prêts en famille et entre amis, les remboursements, et un rappel le jour prévu.</p></div>
-      <div class="carte"><h3>Les charges</h3><p>Loyer, électricité, internet : programmés une fois, rappelés le jour venu.</p></div>
-      <div class="carte"><h3>Tes chiffres restent à toi</h3><p>Pas de compte, pas de publicité, aucun serveur. Fonctionne sans internet.</p></div>
+    <section class="haut">
+      <div class="enveloppe">
+        <p class="question">À la fin du mois, toi aussi tu ne sais pas où part ton argent&nbsp;?</p>
+        <h1>Gère ton argent<br><em>de poche.</em></h1>
+        <p class="sous">Voici la solution&nbsp;: dis ce que tu dépenses, MaPoche le note, le range et te montre ce qu'il te reste. Sans compte, tout reste sur ton téléphone.</p>
+        <div class="badges" id="telecharger" data-cta>
+          <a class="badge google" href="https://play.google.com/store/apps/details?id=app.mapoche" rel="noopener"><img src="img/badge-google-play.png" width="646" height="250" alt="Disponible sur Google Play"></a>
+          <!-- Quand Apple aura publié l'app : remplacer ce <span> par <a class="badge apple" href="https://apps.apple.com/app/id6835268034"
+               rel="noopener">, ici et dans la pastille du bas, et corriger la question « Quel téléphone faut-il ? » de l'aide. -->
+          <span class="badge apple"><img src="img/badge-app-store.svg" width="120" height="40" alt="Télécharger dans l'App Store"></span>
+        </div>
+        <p class="ios">Gratuite · Sans compte · Sans publicité</p>
+      </div>
+      <div class="scene">
+        <div class="halo"></div>
+        <div class="tel"><picture><source srcset="img/ecran-phrase-g.webp" type="image/webp"><img src="img/ecran-phrase-g.jpg" width="640" height="1385" alt="MaPoche a compris la phrase « Ce matin moto-taxi 1 000, marché 3 500, et j'ai reçu 15 000 de la vente de tissus » : 3 notes rangées" fetchpriority="high" decoding="async" loading="eager"></picture></div>
+      </div>
     </section>
 
-    <section id="aide">
-      <p class="etiquette">Aide</p>
-      <h2>Les questions qu'on nous pose</h2>
-      <details><summary>Faut-il internet pour utiliser MaPoche ?</summary>
-        <p>Non. Tout fonctionne sans internet. Seule la voix peut en avoir besoin, selon ton téléphone : si le français n'est pas installé
-          pour la reconnaissance vocale sans connexion, le téléphone passe par internet. Sans réseau, note au clavier.</p></details>
-      <details><summary>Dans quels pays et quelles monnaies ?</summary>
-        <p>Mali, Sénégal, Côte d'Ivoire, Burkina Faso et Niger en FCFA, et Guinée en francs guinéens (GNF). Tu choisis ton pays au premier
-          lancement, et tu peux le changer dans les Réglages.</p></details>
-      <details><summary>MaPoche est-elle reliée à mon compte mobile money ou à ma banque ?</summary>
-        <p>Non. MaPoche est un carnet : c'est toi qui notes ce que tu dépenses et ce que tu reçois. Elle ne se connecte à aucun compte, ne
-          fait aucun paiement et ne déplace aucun argent réel.</p></details>
-      <details><summary>Je change de téléphone : comment garder mes notes ?</summary>
-        <p>Avant de changer, exporte tes notes en CSV depuis le Profil et garde le fichier. La sauvegarde en ligne n'existe pas encore :
-          tes notes ne quittent jamais ton téléphone sans toi.</p></details>
-      <details><summary>J'ai oublié mon code à 4 chiffres.</summary>
-        <p>Touche « Code oublié ? » sur l'écran du code. Si l'empreinte est activée, elle te permet de choisir un nouveau code. Sinon, il
-          faut tout effacer et recommencer : pour ta sécurité, personne ne peut retrouver ton code, même nous.</p></details>
-      <details><summary>Comment tout effacer ?</summary>
-        <p>Profil, puis « Tout effacer ». Supprimer l'app efface aussi toutes ses données du téléphone.</p></details>
+
+
+
+    <section class="enveloppe ecrans" aria-labelledby="titre-ecrans">
+      <p class="etiq monte">Écran par écran</p>
+      <h2 class="monte" id="titre-ecrans">Toute l'app, <em>d'un geste.</em></h2>
+      <div class="rail">
+        <figure><div class="tel"><picture><source srcset="img/ecran-phrase.webp" type="image/webp"><img src="img/ecran-phrase.jpg" width="420" height="909" alt="La phrase : MaPoche a compris 3 notes" loading="lazy" decoding="async"></picture></div><figcaption><b>01</b>La phrase</figcaption></figure>
+        <figure><div class="tel"><picture><source srcset="img/ecran-accueil.webp" type="image/webp"><img src="img/ecran-accueil.jpg" width="420" height="909" alt="L'accueil : il te reste 214 500 FCFA" loading="lazy" decoding="async"></picture></div><figcaption><b>02</b>Il te reste</figcaption></figure>
+        <figure><div class="tel"><picture><source srcset="img/ecran-bilan.webp" type="image/webp"><img src="img/ecran-bilan.jpg" width="420" height="909" alt="Le bilan du mois" loading="lazy" decoding="async"></picture></div><figcaption><b>03</b>Le bilan</figcaption></figure>
+        <figure><div class="tel"><picture><source srcset="img/ecran-dettes.webp" type="image/webp"><img src="img/ecran-dettes.jpg" width="420" height="909" alt="Qui me doit" loading="lazy" decoding="async"></picture></div><figcaption><b>04</b>Qui me doit</figcaption></figure>
+        <figure><div class="tel"><picture><source srcset="img/ecran-programmees.webp" type="image/webp"><img src="img/ecran-programmees.jpg" width="420" height="909" alt="Les charges programmées : internet, électricité, loyer" loading="lazy" decoding="async"></picture></div><figcaption><b>05</b>Programmées</figcaption></figure>
+        <figure><div class="tel"><picture><source srcset="img/ecran-cache.webp" type="image/webp"><img src="img/ecran-cache.jpg" width="420" height="909" alt="L'accueil avec les montants cachés" loading="lazy" decoding="async"></picture></div><figcaption><b>06</b>Montants cachés</figcaption></figure>
+      </div>
+      <p class="glisse">Glisse pour voir les six écrans</p>
     </section>
 
-    <section class="contact" id="contact">
-      <h2 style="margin:0 0 4px">Une question, une idée, un souci ?</h2>
-      <p>Écris-nous sur WhatsApp : <strong style="color:#fff">+223 76 49 95 06</strong></p>
-      <a class="bouton" href="https://wa.me/22376499506" rel="noopener">Ouvrir WhatsApp</a>
+    <section class="enveloppe serment" style="padding-bottom:104px" aria-labelledby="titre-confidentialite">
+      <p class="etiq monte" id="titre-confidentialite">Confidentialité</p>
+      <blockquote class="monte">Tes chiffres ne quittent <span>jamais ton téléphone.</span></blockquote>
+      <p class="faits monte">Pas de compte <span>·</span> Pas de publicité <span>·</span> Aucun serveur</p>
+      <a class="monte" href="confidentialite.html">Lire la politique de confidentialité</a>
+    </section>
+
+    <section class="enveloppe pays monte" aria-label="Pays">
+      <p>Mali <span>·</span> Sénégal <span>·</span> Côte&nbsp;d'Ivoire <span>·</span> Burkina&nbsp;Faso <span>·</span> Niger <span>·</span> Guinée</p>
+      <small>En FCFA, et en francs guinéens en Guinée.</small>
+    </section>
+
+    <section class="enveloppe bloc aide" id="aide" style="padding-top:60px" aria-labelledby="titre-aide">
+      <p class="etiq monte">Aide</p>
+      <h2 class="monte" id="titre-aide">Les questions <em>qu'on nous pose.</em></h2>
+      <div class="faq">
+        <details><summary>Combien coûte MaPoche&nbsp;?</summary>
+          <p>Rien. MaPoche est gratuite, sans publicité et sans achat dans l'app.</p></details>
+        <details><summary>Faut-il internet pour utiliser MaPoche&nbsp;?</summary>
+          <p>Non. Tout fonctionne sans internet. Seule la voix peut en avoir besoin, selon ton téléphone&nbsp;: si le français n'est pas installé pour la reconnaissance vocale sans connexion, le téléphone passe par internet. Sans réseau, note au clavier.</p></details>
+        <details><summary>Quel téléphone faut-il&nbsp;?</summary>
+          <p>Un Android 7 ou plus récent. Si MaPoche te demande une mise à jour, mets à jour «&nbsp;Android System WebView&nbsp;» ou Chrome dans le Play Store. Sur iPhone, il faut iOS 15.4 ou plus récent&nbsp;: MaPoche est en cours de validation chez Apple, le bouton App Store y mènera dès sa publication.</p></details>
+        <details><summary>Dans quels pays et quelles monnaies&nbsp;?</summary>
+          <p>Mali, Sénégal, Côte d'Ivoire, Burkina Faso et Niger en FCFA, et Guinée en francs guinéens (GNF). Tu choisis ton pays au premier lancement, et tu peux le changer ensuite.</p></details>
+        <details><summary>MaPoche est-elle reliée à mon compte mobile money ou à ma banque&nbsp;?</summary>
+          <p>Non. MaPoche est un carnet&nbsp;: c'est toi qui notes ce que tu dépenses et ce que tu reçois. Elle ne se connecte à aucun compte, ne fait aucun paiement et ne déplace aucun argent réel.</p></details>
+        <details><summary>Je change de téléphone&nbsp;: comment garder mes notes&nbsp;?</summary>
+          <p>Avant de changer, exporte tes notes en CSV depuis «&nbsp;Mon compte&nbsp;» et garde le fichier. La sauvegarde en ligne n'existe pas encore&nbsp;: tes notes ne quittent jamais ton téléphone sans toi.</p></details>
+        <details><summary>J'ai oublié mon code à 4 chiffres.</summary>
+          <p>Touche «&nbsp;Code oublié&nbsp;?&nbsp;» sur l'écran du code. Si l'empreinte est activée, elle te permet de choisir un nouveau code. Sinon, il faut tout effacer et recommencer&nbsp;: pour ta sécurité, personne ne peut retrouver ton code, même nous.</p></details>
+        <details><summary>Comment tout effacer&nbsp;?</summary>
+          <p>Dans «&nbsp;Mon compte&nbsp;», touche «&nbsp;Tout effacer&nbsp;». Supprimer l'app efface aussi toutes ses données du téléphone.</p></details>
+      </div>
+    </section>
+
+    <section class="enveloppe contact" id="contact" aria-labelledby="titre-contact">
+      <p class="etiq monte">Contact</p>
+      <h2 class="monte" id="titre-contact">Une question&nbsp;? <em>Écris&#8209;nous.</em></h2>
+      <a class="ligne-wa monte" href="https://wa.me/22376499506?text=Bonjour%2C%20j%27ai%20une%20question%20sur%20MaPoche." rel="noopener"><span><small>WhatsApp</small><strong>Écrire sur WhatsApp</strong></span><i><svg aria-hidden="true"><use href="#fleche"/></svg></i></a>
     </section>
   </main>
 
-  <footer>
-    <span>© 2026 KONATE TECHNOLOGIE SARL, Bamako</span>
-    <a href="confidentialite.html">Politique de confidentialité</a>
+  <footer class="pied">
+    <div class="enveloppe">
+      <span class="marque"><svg aria-hidden="true"><use href="#cauri"/></svg>mapoche</span>
+      <a href="confidentialite.html">Confidentialité</a>
+      <a href="#aide">Aide</a>
+      <a href="https://play.google.com/store/apps/details?id=app.mapoche" rel="noopener">Google Play</a>
+      <span>© 2026 KONATE TECHNOLOGIE SARL</span>
+    </div>
   </footer>
 </div>
+
+<div class="flottant" data-flottant aria-hidden="true">
+  <a class="badge google" href="https://play.google.com/store/apps/details?id=app.mapoche" rel="noopener" tabindex="-1"><img src="img/badge-google-play.png" width="646" height="250" alt="Disponible sur Google Play"></a>
+  <span class="badge apple"><img src="img/badge-app-store.svg" width="120" height="40" alt="Télécharger dans l'App Store"></span>
+</div>
+
+<script>
+/* ES5 seulement : la page doit marcher sur les vieux téléphones. Sans ce script, tout reste affiché et lisible. */
+(function(){
+  'use strict';
+  var chaque = function(liste, f){ Array.prototype.forEach.call(liste, f); };
+
+  // Apparition douce au défilement (la classe « js » est posée dans <head>, avant le premier affichage)
+  if (/\bjs\b/.test(document.documentElement.className)){
+    var vus = new IntersectionObserver(function(es){
+      chaque(es, function(e){ if (e.isIntersecting){ e.target.className += ' visible'; vus.unobserve(e.target); } });
+    }, {rootMargin:'0px 0px -6% 0px'});
+    chaque(document.querySelectorAll('.monte'), function(el){ vus.observe(el); });
+  }
+
+  // La pastille du bas : après le bouton du haut, jamais sur le pied de page (calcul direct à chaque défilement)
+  var flottant = document.querySelector('[data-flottant]'), cta = document.querySelector('[data-cta]'), pied = document.querySelector('.pied'), montree = false;
+  var surDefilement = function(){
+    var montre = cta.getBoundingClientRect().bottom < 0 && pied.getBoundingClientRect().top > window.innerHeight;
+    if (montre === montree) return;
+    montree = montre;
+    flottant.className = montre ? 'flottant montre' : 'flottant';
+    flottant.setAttribute('aria-hidden', String(!montre));
+  };
+  window.addEventListener('scroll', surDefilement, false);
+  window.addEventListener('resize', surDefilement, false);
+})();
+</script>
 </body>
 </html>
